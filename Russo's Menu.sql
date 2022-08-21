@@ -42,19 +42,19 @@ INSERT INTO russos VALUES (NULL, "Greek Calzone", "Calzone", 11.95, 1);
 
 
 --What is the average price of EVERY menu item?
-SELECT AVG(price) FROM russos;
+SELECT AVG(price) AS "Average Price (every menu item)" FROM russos;
 
 --What is the average price for salads?
-SELECT AVG(price) FROM russos WHERE section="Salad";
+SELECT AVG(price) AS "Average Price of Salads" FROM russos WHERE section="Salad";
 
 --What is the average price for pastas?
-SELECT AVG(price) FROM russos WHERE section="Pasta";
+SELECT AVG(price) AS "Average Price of Pastas" FROM russos WHERE section="Pasta";
 
 --Show Popular Items from entire menu:
 SELECT item, price FROM russos WHERE popularity>5 ORDER BY price;
 
 --Show Popular Starters:
-SELECT item, price FROM russos WHERE popularity>5 AND (section="Soup" OR section="Salad" OR section="Appetizer") ORDER BY price;
+SELECT item, price FROM russos WHERE popularity>5 AND section IN("Soup", "Salad", "Appetizer") ORDER BY price;
 
 --Show Popular Meals:
-SELECT item, price FROM russos WHERE popularity>5 AND (section="Calzone" OR section="Pasta" or section="Sandwich") ORDER BY price;
+SELECT item, price FROM russos WHERE popularity>5 AND section IN("Calzone", "Pasta", "Sandwich") ORDER BY price;
